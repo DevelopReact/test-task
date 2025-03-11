@@ -25,7 +25,7 @@ export const PokemonItem: FC<PokemonItemProps> = ({
   weight,
   types
 }) => {
-  const { setTrainerTeam, trainerTeam } = useTrainerStore();
+  const { setTrainerTeam } = useTrainerStore();
 
   const addPokemonToTeamOnclick = () => {
     setTrainerTeam({
