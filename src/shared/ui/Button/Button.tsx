@@ -1,14 +1,16 @@
 // react
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode } from "react";
 //classnames
-import classNames from 'classnames';
+import classNames from "classnames";
 
-interface ButtonProps {
+export interface ButtonProps {
   children: ReactNode;
+  label?: string;
+  primary?: boolean;
   onClick?: () => void;
   disabled?: boolean;
-  type: 'submit' | 'reset' | 'button';
-  size: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
+  type: "submit" | "reset" | "button";
+  size: "xs" | "sm" | "base" | "lg" | "xl";
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -16,21 +18,22 @@ export const Button: FC<ButtonProps> = ({
   onClick,
   disabled,
   type,
-  size
+  size,
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={classNames('px-4 py-3 rounded-lg', {
-        'w-20': size === 'sm',
-        'w-24': size === 'sm',
-        'w-32': size === 'base',
-        'w-40': size === 'lg',
-        'w-48': size === 'xl',
-        'bg-indigo-600 text-white cursor-pointer': !disabled,
-        'border-gray-500 border-1 text-gray-500': disabled,
-        'bg-pink-600 text-white cursor-pointers': type === 'reset'
+      className={classNames("px-4 py-3 rounded-lg", {
+        "w-20": size === "sm",
+        "w-24": size === "sm",
+        "w-32": size === "base",
+        "w-40": size === "lg",
+        "w-48": size === "xl",
+        "bg-indigo-600 text-white cursor-pointer":
+          type === "submit" && !disabled,
+        "border-gray-500 border-1 text-gray-500": type === "button" || disabled,
+        "bg-pink-600 text-white cursor-pointers": type === "reset" && !disabled,
       })}
     >
       {children}

@@ -25,7 +25,7 @@ export const PokemonItem: FC<PokemonItemProps> = ({
   weight,
   types
 }) => {
-  const { setTrainerTeam } = useTrainerStore();
+  const { setTrainerTeam, trainerTeam } = useTrainerStore();
 
   const addPokemonToTeamOnclick = () => {
     setTrainerTeam({
@@ -37,7 +37,7 @@ export const PokemonItem: FC<PokemonItemProps> = ({
       types
     });
   };
-
+  console.log(trainerTeam);
   return (
     <div
       className='border-1 border-gray-600 rounded-lg bg-white w-50 h-50 flex flex-col justify-center items-center hover:border-indigo-600 hover:border-2 hover: cursor-pointer'
